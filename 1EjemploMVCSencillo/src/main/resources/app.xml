@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+">
+    <!--Los objetos java en spring son los beans, y su clave primaria sera al id-->
+    <!--Con el autowire me evito tener que poner los properties, porque spring hace IoC y me instancia todos-->
+    <bean id="persona" class="com.mycompany.ejemplomvcsencillo.beans.Persona" init-method="metodoInicial" destroy-method="limpiar" autowire="byType">
+        <!--Solo hay dos modos de inyectar dependencia, o por valor (String y datos primitivos de java) o por referencia (resto de casos)-->
+        <property name="nombre" value="abc"/>
+        <property name="aficion" ref="aficion"/>
+    </bean>
+    <bean id="aficion" class="com.mycompany.ejemplomvcsencillo.beans.Aficion"  />
+</beans>
